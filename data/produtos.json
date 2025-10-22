@@ -1,0 +1,20 @@
+[
+    {
+      "nome": "Colar Dourado",
+      "preco": "R$ 89,90",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLRuv5cBoegJuBvn_yRnVueQlJdefdABkyHw&s",
+      "descricao": "Colar folheado a ouro 18k com design elegante e resistente à oxidação."
+    },
+    {
+      "nome": "Pulseira Glam",
+      "preco": "R$ 74,90",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkCkDuLvrBiz-DICxWCreVyHIgoqUnk9cpOQ&s",
+      "descricao": "Pulseira dourada com pedras de zircônia, ideal para ocasiões especiais."
+    },
+    {
+      "nome": "Brinco Solar",
+      "preco": "R$ 59,90",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKpO02aZYIycfOE1YiCpcJOVKjWBYdeXuFDw&s",
+      "descricao": "Brinco folheado em ouro com design radiante e acabamento delicado."
+    }
+  ]

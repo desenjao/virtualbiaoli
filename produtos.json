@@ -1,0 +1,39 @@
+{
+    "colecoes": [
+      {
+        "id": "la-prateada",
+        "nome": "La Prateada 🌙",
+        "descricao": "Beleza prateada e calma lunar para quem brilha sem precisar de sol.",
+        "estilo": "mística",
+        "produtos": [
+          {
+            "nome": "Colar Lunar Prateado",
+            "preco": 39.90,
+            "img": "imagens/colar-lunar.jpg",
+            "link": "https://wa.me/5588999999999?text=Quero%20comprar%20o%20Colar%20Lunar%20Prateado!"
+          },
+          {
+            "nome": "Brincos Lua Serena",
+            "preco": 29.90,
+            "img": "imagens/brincos-lua.jpg",
+            "link": "https://wa.me/5588999999999?text=Quero%20os%20Brincos%20Lua%20Serena!"
+          }
+        ]
+      },
+      {
+        "id": "raio-de-sol",
+        "nome": "Raio de Sol ☀️",
+        "descricao": "Energia dourada e vibrante para quem ilumina tudo ao redor.",
+        "estilo": "solar",
+        "produtos": [
+          {
+            "nome": "Pulseira Dourada Raio",
+            "preco": 35.00,
+            "img": "imagens/pulseira-raio.jpg",
+            "link": "https://wa.me/5588999999999?text=Quero%20a%20Pulseira%20Dourada%20Raio!"
+          }
+        ]
+      }
+    ]
+  }
+  

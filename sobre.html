@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre - Oli Store</title>
+
+  <!-- Ícones do Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fffaf6 0%, #fff0e6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+      padding-bottom: 80px;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      background: #fff;
+      border-bottom: 1px solid #ffe3cc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    header img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #ffa44f;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .voltar-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #ff9a3c;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .voltar-btn:hover {
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    /* Container Principal */
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 30px 0;
+      position: relative;
+    }
+
+    .hero-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ff9a3c;
+      box-shadow: 0 8px 25px rgba(255, 154, 60, 0.3);
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      color: #ff9a3c;
+      margin-bottom: 10px;
+      background: linear-gradient(45deg, #ff9a3c, #ff6b35);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from { text-shadow: 0 0 10px rgba(255, 154, 60, 0.5); }
+      to { text-shadow: 0 0 20px rgba(255, 154, 60, 0.8); }
+    }
+
+    .hero-subtitle {
+      color: #666;
+      font-size: 1rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+
+    /* Cards de História */
+    .historia-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid #ff9a3c;
+      transform: translateX(-50px);
+      opacity: 0;
+      animation: slideInRight 0.8s ease forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .historia-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 154, 60, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .historia-card:hover::before {
+      left: 100%;
+    }
+
+    .historia-card:nth-child(2) {
+      animation-delay: 0.3s;
+      border-left-color: #4CAF50;
+    }
+
+    .historia-card:nth-child(3) {
+      animation-delay: 0.6s;
+      border-left-color: #2196F3;
+    }
+
+    @keyframes slideInRight {
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-titulo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: #ff9a3c;
+    }
+
+    .card-titulo i {
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-5px); }
+      60% { transform: translateY(-3px); }
+    }
+
+    .card-titulo h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .historia-card p {
+      line-height: 1.6;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* Elementos Visuais */
+    .destaque {
+      background: linear-gradient(45deg, #ff9a3c, #ff6b35);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .emoji {
+      font-size: 1.2rem;
+      animation: spin 3s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      margin: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #ff9a3c, #4CAF50, #2196F3);
+      border-radius: 10px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -33px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff9a3c;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #ff9a3c;
+    }
+
+    .timeline-item:nth-child(2)::before {
+      background: #4CAF50;
+      box-shadow: 0 0 0 2px #4CAF50;
+    }
+
+    .timeline-item:nth-child(3)::before {
+      background: #2196F3;
+      box-shadow: 0 0 0 2px #2196F3;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .stat-item {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      transform: scale(0);
+      animation: popIn 0.6s ease forwards;
+    }
+
+    .stat-item:nth-child(1) { animation-delay: 0.8s; }
+    .stat-item:nth-child(2) { animation-delay: 1s; }
+    .stat-item:nth-child(3) { animation-delay: 1.2s; }
+    .stat-item:nth-child(4) { animation-delay: 1.4s; }
+
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .stat-numero {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ff9a3c;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* CTA Final */
+    .cta-final {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #ff9a3c, #ff6b35);
+      border-radius: 20px;
+      color: white;
+      margin-top: 20px;
+      transform: translateY(50px);
+      opacity: 0;
+      animation: slideInUp 1s ease 1.5s forwards;
+    }
+
+    @keyframes slideInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .cta-final h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .btn-cta {
+      background: white;
+      color: #ff9a3c;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Menu inferior */
+    nav {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      border-top: 1px solid #ffe3cc;
+      position: fixed;
+      bottom: 0;
+      padding: 10px 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #ff9a3c;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    nav button:hover {
+      transform: scale(1.2);
+    }
+
+    .carrinho-contador {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4444;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 154, 60, 0.3);
+      border-radius: 50%;
+      animation: floatParticle 20s infinite linear;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <header>
+    <button class="voltar-btn" onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <img src="img/logo.jpg" alt="Logo Oli" />
+  </header>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="img/IMG_5102.webp" alt="Beatriz Oliveira" class="hero-avatar">
+      <h1>Beatriz Oliveira</h1>
+      <p class="hero-subtitle">Criadora • Empreendedora • Transformadora de Sonhos</p>
+    </section>
+
+    <!-- Minha História -->
+    <section class="historia-card">
+      <div class="card-titulo">
+        <i class="fa-solid fa-heart"></i>
+        <h2>Minha História</h2>
+      </div>
+      <p>
+        Oi, eu sou a <span class="destaque">Beatriz Oliveira</span>! <span class="emoji">🌟</span> Há dois anos, comecei um sonho que parecia distante: criar acessórios que transformassem looks e trouxessem alegria. Com miçangas e muita paixão, fundei a <span class="destaque">Biaoli Acessórios</span>, sem imaginar a proporção que isso tomaria. Cada peça que crio carrega um pedacinho de mim — <span class="destaque">fé, coragem e ousadia</span>.
+      </p>
+    </section>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <strong>Biaoli Acessórios</strong>
+        <p>Tudo começou com uma lojinha artesanal. Eu amava ver como um acessório podia mudar um look e fazer alguém se sentir especial.</p>
+      </div>
+      <div class="timeline-item">
+        <strong>Crescimento Digital</strong>
+        <p>Minhas estratégias de marketing digital e o carinho dos clientes transformaram a Biaoli em algo maior.</p>
+      </div>
+      <div class="timeline-item">
+        <strong>Novos Horizontes</strong>
+        <p>Hoje, a Biaoli é sobre autenticidade, estilo e conexões que vão além das peças.</p>
+      </div>
+    </div>
+
+    <!-- Biaoli Acessórios -->
+    <section class="historia-card">
+      <div class="card-titulo">
+        <i class="fa-solid fa-gem"></i>
+        <h2>Biaoli Acessórios</h2>
+      </div>
+      <p>
+        Com o tempo, minhas estratégias de marketing digital e o carinho dos clientes transformaram a Biaoli em algo maior. Cada feedback, cada pessoa que buscava meu trabalho, me mostrava o potencial do que eu criava. Hoje, a Biaoli é sobre <span class="destaque">autenticidade, estilo e conexões</span> que vão além das peças.
+      </p>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-numero">2+</div>
+        <div class="stat-label">Anos de Experiência</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-numero">500+</div>
+        <div class="stat-label">Peças Vendidas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-numero">100%</div>
+        <div class="stat-label">Feito com Amor</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-numero">∞</div>
+        <div class="stat-label">Sonhos Realizados</div>
+      </div>
+    </div>
+
+    
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+      <h3>Vamos Construir Algo Incrível Juntos?</h3>
+      <p>Sou grata por ter pessoas incríveis ao meu lado e orgulhosa da mulher que me tornei. Minha fé em Deus é meu combustível!</p>
+      <button class="btn-cta" onclick="window.location.href='index.html'">
+        Explorar Coleção <i class="fa-solid-arrow-right"></i>
+      </button>
+    </section>
+
+  </div>
+
+  <!-- Menu Inferior -->
+  <nav>
+    <button onclick="window.location.href='sobre.html'">
+      <i class="fa-solid fa-circle-info"></i>
+    </button>
+    <button onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-house"></i>
+    </button>
+    <button onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <button onclick="window.location.href='carrinho.html'">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="carrinho-contador" id="carrinho-contador">0</span>
+    </button>
+  </nav>
+
+  <script>
+    // Partículas animadas no background
+    function criarParticulas() {
+      const container = document.getElementById('particles');
+      const particulas = 15;
+      
+      for (let i = 0; i < particulas; i++) {
+        const particula = document.createElement('div');
+        particula.classList.add('particle');
+        
+        const size = Math.random() * 20 + 5;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 10 + 15;
+        
+        particula.style.width = `${size}px`;
+        particula.style.height = `${size}px`;
+        particula.style.left = `${left}%`;
+        particula.style.animationDelay = `${delay}s`;
+        particula.style.animationDuration = `${duration}s`;
+        particula.style.opacity = Math.random() * 0.5 + 0.2;
+        
+        container.appendChild(particula);
+      }
+    }
+
+    // Carregar contador do carrinho
+    function carregarCarrinho() {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+      const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+      document.getElementById('carrinho-contador').textContent = totalItens;
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+      criarParticulas();
+      carregarCarrinho();
+      
+      // Efeito de digitação no subtítulo
+      const subtitulo = document.querySelector('.hero-subtitle');
+      const texto = "Criadora • Empreendedora • Transformadora de Sonhos";
+      let i = 0;
+      
+      function typeWriter() {
+        if (i < texto.length) {
+          subtitulo.innerHTML += texto.charAt(i);
+          i++;
+          setTimeout(typeWriter, 50);
+        }
+      }
+      
+      setTimeout(typeWriter, 1000);
+    });
+
+    // Efeito de confete no CTA
+    function criarConfete() {
+      // Simulação de efeito de confete - pode ser expandido com biblioteca
+      const cta = document.querySelector('.cta-final');
+      cta.style.transform = 'scale(1.05)';
+      setTimeout(() => {
+        cta.style.transform = 'scale(1)';
+      }, 200);
+    }
+
+    document.querySelector('.btn-cta').addEventListener('click', criarConfete);
+  </script>
+</body>
+</html>

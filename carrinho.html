@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrinho - Oli Store</title>
+
+  <!-- Ícones do Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #fffaf6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+      padding-bottom: 80px;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      background: #fff;
+      border-bottom: 1px solid #ffe3cc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #ffa44f;
+      padding: 10px;
+    }
+
+    .voltar-btn {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #ff9a3c;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Conteúdo principal */
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .titulo-pagina {
+      text-align: center;
+      color: #ff9a3c;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    /* Carrinho vazio */
+    .carrinho-vazio {
+      text-align: center;
+      padding: 40px 20px;
+      color: #777;
+    }
+
+    .carrinho-vazio i {
+      font-size: 3rem;
+      color: #ffe3cc;
+      margin-bottom: 15px;
+    }
+
+    .carrinho-vazio p {
+      margin-bottom: 20px;
+    }
+
+    .btn-primario {
+      background: #ffa44f;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primario:hover {
+      background: #ff8c1c;
+    }
+
+    /* Itens do carrinho */
+    .itens-carrinho {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .item-carrinho {
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      display: flex;
+      gap: 15px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .item-imagem {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-nome {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .item-preco {
+      color: #ff9a3c;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .item-controles {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantidade-btn {
+      background: #fff5eb;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #ff9a3c;
+      font-weight: bold;
+    }
+
+    .quantidade-texto {
+      font-weight: 600;
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .remover-btn {
+      background: none;
+      border: none;
+      color: #ff4444;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 5px;
+    }
+
+    /* Resumo do pedido */
+    .resumo-pedido {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .linha-resumo {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .total {
+      border-top: 1px solid #ffe3cc;
+      padding-top: 10px;
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #ff9a3c;
+    }
+
+    .btn-finalizar {
+      width: 100%;
+      background: #ffa44f;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    .btn-finalizar:hover {
+      background: #ff8c1c;
+    }
+
+    .btn-finalizar:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Menu inferior */
+    nav {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      border-top: 1px solid #ffe3cc;
+      position: fixed;
+      bottom: 0;
+      padding: 10px 0;
+      z-index: 20;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: #ff9a3c;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    nav button:hover {
+      transform: scale(1.2);
+    }
+
+    .carrinho-contador {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4444;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Pop-up */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 30;
+    }
+
+    .popup.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 320px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-content h2 {
+      color: #ff9a3c;
+      margin-bottom: 10px;
+    }
+
+    .popup-content p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .popup-botoes {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn-confirmar {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn-cancelar {
+      background: #ff4444;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="voltar-btn" onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <img src="img/logo.jpg" alt="Logo Oli" />
+  </header>
+
+  <div class="container">
+    <h1 class="titulo-pagina">Meu Carrinho</h1>
+
+    <!-- Carrinho Vazio -->
+    <div class="carrinho-vazio" id="carrinho-vazio" style="display: none;">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <p>Seu carrinho está vazio</p>
+      <button class="btn-primario" onclick="window.location.href='index.html'">
+        Continuar Comprando
+      </button>
+    </div>
+
+    <!-- Itens do Carrinho -->
+    <div class="itens-carrinho" id="itens-carrinho"></div>
+
+    <!-- Resumo do Pedido -->
+    <div class="resumo-pedido" id="resumo-pedido" style="display: none;">
+      <div class="linha-resumo">
+        <span>Subtotal:</span>
+        <span id="subtotal">R$ 0,00</span>
+      </div>
+      <div class="linha-resumo">
+        <span>Frete:</span>
+        <span id="frete">R$ 0,00</span>
+      </div>
+      <div class="linha-resumo total">
+        <span>Total:</span>
+        <span id="total">R$ 0,00</span>
+      </div>
+      <button class="btn-finalizar" onclick="finalizarCompra()">
+        Finalizar Compra
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu Inferior -->
+  <nav>
+    <button onclick="mostrarInfo('Sobre a OLI', 'A OLI é uma marca de acessórios que valoriza a elegância e autenticidade de cada pessoa.')">
+      <i class="fa-solid fa-circle-info"></i>
+    </button>
+    <button onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-house"></i>
+    </button>
+    <button onclick="window.location.href='index.html'">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <button onclick="window.location.href='carrinho.html'">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="carrinho-contador" id="carrinho-contador">0</span>
+    </button>
+  </nav>
+
+  <!-- Pop-up de Confirmação -->
+  <div class="popup" id="popup-confirmacao">
+    <div class="popup-content">
+      <h2>Remover Item</h2>
+      <p>Tem certeza que deseja remover este item do carrinho?</p>
+      <div class="popup-botoes">
+        <button class="btn-confirmar" onclick="confirmarRemocao()">Sim</button>
+        <button class="btn-cancelar" onclick="cancelarRemocao()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up de Finalização -->
+  <div class="popup" id="popup-finalizado">
+    <div class="popup-content">
+      <h2>Compra Finalizada!</h2>
+      <p>Obrigado pela sua compra! 🎉</p>
+      <p>Em breve você receberá um email com os detalhes do pedido.</p>
+      <button class="btn-primario" onclick="fecharPopupFinalizado()">Continuar Comprando</button>
+    </div>
+  </div>
+
+  <!-- Pop-up de Informações -->
+  <div class="popup" id="popup-info">
+    <div class="popup-content">
+      <h2 id="popup-titulo">Título</h2>
+      <p id="popup-texto">Texto da descrição</p>
+      <button class="btn-primario" onclick="fecharPopupInfo()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    // Variáveis globais
+    let carrinho = [];
+    let itemParaRemover = null;
+
+    // Atualizar contador do carrinho
+    function atualizarContadorCarrinho() {
+      const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+      document.getElementById('carrinho-contador').textContent = totalItens;
+    }
+
+    // Carregar carrinho do localStorage
+    function carregarCarrinho() {
+      const carrinhoSalvo = localStorage.getItem('carrinho');
+      carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+      atualizarContadorCarrinho();
+      renderizarCarrinho();
+    }
+
+    // Renderizar carrinho
+    function renderizarCarrinho() {
+      const container = document.getElementById('itens-carrinho');
+      const carrinhoVazio = document.getElementById('carrinho-vazio');
+      const resumoPedido = document.getElementById('resumo-pedido');
+
+      // Limpar container
+      container.innerHTML = '';
+
+      if (carrinho.length === 0) {
+        carrinhoVazio.style.display = 'block';
+        resumoPedido.style.display = 'none';
+        return;
+      }
+
+      carrinhoVazio.style.display = 'none';
+      resumoPedido.style.display = 'block';
+
+      // Renderizar itens
+      carrinho.forEach((item, index) => {
+        const precoNumerico = parseFloat(item.preco.replace('R$ ', '').replace(',', '.'));
+        const subtotalItem = precoNumerico * item.quantidade;
+
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('item-carrinho');
+        itemElement.innerHTML = `
+          <img src="${item.imagem}" alt="${item.nome}" class="item-imagem">
+          <div class="item-info">
+            <div class="item-nome">${item.nome}</div>
+            <div class="item-preco">${item.preco}</div>
+            <div class="item-controles">
+              <button class="quantidade-btn" onclick="alterarQuantidade(${index}, -1)">-</button>
+              <span class="quantidade-texto">${item.quantidade}</span>
+              <button class="quantidade-btn" onclick="alterarQuantidade(${index}, 1)">+</button>
+              <button class="remover-btn" onclick="solicitarRemocao(${index})">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(itemElement);
+      });
+
+      atualizarResumo();
+    }
+
+    // Alterar quantidade do item
+    function alterarQuantidade(index, mudanca) {
+      const novoValor = carrinho[index].quantidade + mudanca;
+      
+      if (novoValor < 1) {
+        solicitarRemocao(index);
+        return;
+      }
+      
+      carrinho[index].quantidade = novoValor;
+      salvarCarrinho();
+      renderizarCarrinho();
+    }
+
+    // Solicitar remoção de item
+    function solicitarRemocao(index) {
+      itemParaRemover = index;
+      document.getElementById('popup-confirmacao').classList.add('active');
+    }
+
+    // Confirmar remoção
+    function confirmarRemocao() {
+      if (itemParaRemover !== null) {
+        carrinho.splice(itemParaRemover, 1);
+        salvarCarrinho();
+        renderizarCarrinho();
+        itemParaRemover = null;
+      }
+      document.getElementById('popup-confirmacao').classList.remove('active');
+    }
+
+    // Cancelar remoção
+    function cancelarRemocao() {
+      itemParaRemover = null;
+      document.getElementById('popup-confirmacao').classList.remove('active');
+    }
+
+    // Atualizar resumo do pedido
+    function atualizarResumo() {
+      let subtotal = 0;
+      
+      carrinho.forEach(item => {
+        const precoNumerico = parseFloat(item.preco.replace('R$ ', '').replace(',', '.'));
+        subtotal += precoNumerico * item.quantidade;
+      });
+
+      const frete = subtotal > 100 ? 0 : 9.90;
+      const total = subtotal + frete;
+
+      document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      document.getElementById('frete').textContent = frete === 0 ? 'Grátis' : `R$ ${frete.toFixed(2).replace('.', ',')}`;
+      document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      // Atualizar botão de finalizar
+      const btnFinalizar = document.querySelector('.btn-finalizar');
+      btnFinalizar.disabled = carrinho.length === 0;
+    }
+
+    // Finalizar compra
+    function finalizarCompra() {
+      if (carrinho.length === 0) return;
+      
+      // Simular finalização da compra
+      document.getElementById('popup-finalizado').classList.add('active');
+      
+      // Limpar carrinho após finalização
+      setTimeout(() => {
+        carrinho = [];
+        salvarCarrinho();
+        renderizarCarrinho();
+      }, 100);
+    }
+
+    // Salvar carrinho no localStorage
+    function salvarCarrinho() {
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarContadorCarrinho();
+    }
+
+    // Funções dos pop-ups
+    function mostrarInfo(titulo, texto) {
+      document.getElementById('popup-titulo').textContent = titulo;
+      document.getElementById('popup-texto').textContent = texto;
+      document.getElementById('popup-info').classList.add('active');
+    }
+
+    function fecharPopupInfo() {
+      document.getElementById('popup-info').classList.remove('active');
+    }
+
+    function fecharPopupFinalizado() {
+      document.getElementById('popup-finalizado').classList.remove('active');
+      window.location.href = 'index.html';
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', carregarCarrinho);
+  </script>
+</body>
+</html>
