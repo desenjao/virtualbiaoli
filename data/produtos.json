@@ -1,20 +1,311 @@
-[
+{
+  "produtos": [
     {
-      "nome": "Colar Dourado",
-      "preco": "R$ 89,90",
-      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLRuv5cBoegJuBvn_yRnVueQlJdefdABkyHw&s",
-      "descricao": "Colar folheado a ouro 18k com design elegante e resistente à oxidação."
+      "id": 1,
+      "nome": "Colar Lua Mística",
+      "descricao": "Colar com pingente em forma de lua crescente, folheado em ouro com cristal azul.",
+      "preco": 129.00,
+      "categoria": "Colares",
+      "imagens": [
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 8,
+      "avaliacao": 4.9,
+      "destaque": true,
+      "tags": ["colar", "cristal", "mística", "dourado"],
+      "novo": true
     },
     {
-      "nome": "Pulseira Glam",
-      "preco": "R$ 74,90",
-      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkCkDuLvrBiz-DICxWCreVyHIgoqUnk9cpOQ&s",
-      "descricao": "Pulseira dourada com pedras de zircônia, ideal para ocasiões especiais."
+      "id": 2,
+      "nome": "Colar Coração Prateado",
+      "descricao": "Colar delicado com pingente de coração em prata 925.",
+      "preco": 99.90,
+      "categoria": "Colares",
+      "imagens": [
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 12,
+      "avaliacao": 4.5,
+      "destaque": false,
+      "tags": ["colar", "prata", "coração"],
+      "novo": false
     },
     {
-      "nome": "Brinco Solar",
-      "preco": "R$ 59,90",
-      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKpO02aZYIycfOE1YiCpcJOVKjWBYdeXuFDw&s",
-      "descricao": "Brinco folheado em ouro com design radiante e acabamento delicado."
+      "id": 3,
+      "nome": "Colar Estrela Dourada",
+      "descricao": "Colar minimalista com pingente de estrela em dourado 18k.",
+      "preco": 149.90,
+      "categoria": "Colares",
+      "imagens": [
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 10,
+      "avaliacao": 4.7,
+      "destaque": true,
+      "tags": ["colar", "dourado", "estrela", "minimalista"],
+      "novo": true
+    },
+    {
+      "id": 4,
+      "nome": "Colar Pérola Natural",
+      "descricao": "Colar elegante com pérola natural e corrente dourada.",
+      "preco": 179.00,
+      "categoria": "Colares",
+      "imagens": [
+        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 6,
+      "avaliacao": 4.8,
+      "destaque": false,
+      "tags": ["colar", "pérola", "elegante"],
+      "novo": false
+    },
+    {
+      "id": 5,
+      "nome": "Brinco Argola Pérola Serena",
+      "descricao": "Argolas médias com acabamento dourado e pingente de pérola natural.",
+      "preco": 79.00,
+      "categoria": "Brincos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 20,
+      "avaliacao": 4.6,
+      "destaque": false,
+      "tags": ["brinco", "pérola", "elegante"],
+      "novo": true
+    },
+    {
+      "id": 6,
+      "nome": "Brinco Flor Dourada",
+      "descricao": "Brincos delicados com formato de flor em dourado.",
+      "preco": 65.00,
+      "categoria": "Brincos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 15,
+      "avaliacao": 4.4,
+      "destaque": true,
+      "tags": ["brinco", "flor", "dourado"],
+      "novo": false
+    },
+    {
+      "id": 7,
+      "nome": "Brinco Cristal Brilhante",
+      "descricao": "Brincos com cristais que refletem a luz natural.",
+      "preco": 89.90,
+      "categoria": "Brincos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 18,
+      "avaliacao": 4.9,
+      "destaque": true,
+      "tags": ["brinco", "cristal", "brilhante"],
+      "novo": true
+    },
+    {
+      "id": 8,
+      "nome": "Brinco Minimalista Prata",
+      "descricao": "Brincos em prata 925 com design clean e moderno.",
+      "preco": 55.00,
+      "categoria": "Brincos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 25,
+      "avaliacao": 4.3,
+      "destaque": false,
+      "tags": ["brinco", "prata", "minimalista"],
+      "novo": false
+    },
+    {
+      "id": 9,
+      "nome": "Pulseira Folheada Dourada Sol da Tarde",
+      "descricao": "Pulseira elegante com banho de ouro e detalhes delicados, perfeita para o dia a dia.",
+      "preco": 89.90,
+      "categoria": "Pulseiras",
+      "imagens": [
+        "https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 15,
+      "avaliacao": 4.8,
+      "destaque": true,
+      "tags": ["folheado", "pulseira", "dourado", "minimalista"],
+      "novo": false
+    },
+    {
+      "id": 10,
+      "nome": "Pulseira Coração Prateada",
+      "descricao": "Pulseira com charm em forma de coração em prata.",
+      "preco": 75.00,
+      "categoria": "Pulseiras",
+      "imagens": [
+        "https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 20,
+      "avaliacao": 4.5,
+      "destaque": false,
+      "tags": ["pulseira", "prata", "coração"],
+      "novo": true
+    },
+    {
+      "id": 11,
+      "nome": "Pulseira Cristal Azul",
+      "descricao": "Pulseira com cristais azuis e corrente dourada.",
+      "preco": 110.00,
+      "categoria": "Pulseiras",
+      "imagens": [
+        "https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 8,
+      "avaliacao": 4.7,
+      "destaque": true,
+      "tags": ["pulseira", "cristal", "azul"],
+      "novo": false
+    },
+    {
+      "id": 12,
+      "nome": "Pulseira Tennis Dourada",
+      "descricao": "Pulseira estilo tennis com pedras cristalinas.",
+      "preco": 199.00,
+      "categoria": "Pulseiras",
+      "imagens": [
+        "https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 5,
+      "avaliacao": 5.0,
+      "destaque": true,
+      "tags": ["pulseira", "tennis", "dourado"],
+      "novo": true
+    },
+    {
+      "id": 13,
+      "nome": "Anel Aura Dourado",
+      "descricao": "Anel ajustável folheado em ouro com design minimalista e moderno.",
+      "preco": 59.90,
+      "categoria": "Anéis",
+      "imagens": [
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 25,
+      "avaliacao": 4.7,
+      "destaque": false,
+      "tags": ["anel", "minimalista", "folheado"],
+      "novo": false
+    },
+    {
+      "id": 14,
+      "nome": "Anel Flor Prateada",
+      "descricao": "Anel com detalhe em flor em prata 925.",
+      "preco": 69.90,
+      "categoria": "Anéis",
+      "imagens": [
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 18,
+      "avaliacao": 4.6,
+      "destaque": true,
+      "tags": ["anel", "flor", "prata"],
+      "novo": true
+    },
+    {
+      "id": 15,
+      "nome": "Anel Coração Dourado",
+      "descricao": "Anel com pedra em forma de coração em dourado.",
+      "preco": 85.00,
+      "categoria": "Anéis",
+      "imagens": [
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 12,
+      "avaliacao": 4.8,
+      "destaque": false,
+      "tags": ["anel", "coração", "dourado"],
+      "novo": false
+    },
+    {
+      "id": 16,
+      "nome": "Anel Infinity Prata",
+      "descricao": "Anel com design infinito em prata sterling.",
+      "preco": 95.00,
+      "categoria": "Anéis",
+      "imagens": [
+        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 10,
+      "avaliacao": 4.9,
+      "destaque": true,
+      "tags": ["anel", "infinity", "prata"],
+      "novo": true
+    },
+    {
+      "id": 17,
+      "nome": "Conjunto Elegance Dourado",
+      "descricao": "Conjunto completo com colar, brincos e pulseira em dourado.",
+      "preco": 199.90,
+      "categoria": "Conjuntos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 5,
+      "avaliacao": 5.0,
+      "destaque": true,
+      "tags": ["conjunto", "dourado", "elegante"],
+      "novo": true
+    },
+    {
+      "id": 18,
+      "nome": "Conjunto Prata Pura",
+      "descricao": "Conjunto completo em prata 925 com design moderno.",
+      "preco": 229.00,
+      "categoria": "Conjuntos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 7,
+      "avaliacao": 4.8,
+      "destaque": false,
+      "tags": ["conjunto", "prata", "moderno"],
+      "novo": false
+    },
+    {
+      "id": 19,
+      "nome": "Conjunto Noiva Romântico",
+      "descricao": "Conjunto especial para noivas com pérolas e cristais.",
+      "preco": 299.00,
+      "categoria": "Conjuntos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 3,
+      "avaliacao": 5.0,
+      "destaque": true,
+      "tags": ["conjunto", "noiva", "romântico"],
+      "novo": true
+    },
+    {
+      "id": 20,
+      "nome": "Conjunto Casual Dourado",
+      "descricao": "Conjunto perfeito para o dia a dia em dourado rose.",
+      "preco": 169.00,
+      "categoria": "Conjuntos",
+      "imagens": [
+        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      ],
+      "estoque": 15,
+      "avaliacao": 4.6,
+      "destaque": false,
+      "tags": ["conjunto", "casual", "dourado"],
+      "novo": false
     }
-  ]
+  ],
+  "categoryDescriptions": {
+    "Colares": "Peças que destacam seu brilho natural e elegância",
+    "Brincos": "Detalhes que completam e iluminam seu visual",
+    "Pulseiras": "Elegância e sofisticação para seu pulso",
+    "Anéis": "Toque final que marca sua personalidade",
+    "Conjuntos": "Combinações perfeitas para looks completos"
+  }
+}
