@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Categorias - BiaOli</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .category-page {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        
+        .back-button {
+            background: var(--surface);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: var(--border);
+            transform: scale(1.1);
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .grid-product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        
+        .grid-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .grid-product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: var(--surface);
+        }
+        
+        .grid-product-info {
+            padding: 15px;
+        }
+        
+        .grid-product-name {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .grid-product-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        
+        .category-filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+        
+        .filter-btn:hover {
+            background: var(--surface);
+        }
+        
+        .no-products {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .page-header {
+                margin-bottom: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i data-lucide="sparkles"></i>
+            Bia<span>Oli</span>
+        </div>
+        <div class="header-actions">
+            <div class="cart-icon" id="cartBtn">
+                <i data-lucide="shopping-bag"></i>
+                <div class="cart-count" id="cartCount">0</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Page Content -->
+    <div class="category-page" id="categoryPage">
+        <div class="page-header">
+            <button class="back-button" id="backButton">
+                <i data-lucide="arrow-left"></i>
+            </button>
+            <h1 class="page-title" id="pageTitle">Carregando...</h1>
+        </div>
+        
+        <div class="category-filters" id="categoryFilters">
+            <!-- Filters will be loaded here -->
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <div class="loading">
+                <i data-lucide="loader-2" class="loading-spinner"></i>
+                <p>Carregando produtos...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal (mesmo do index) -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal">
+            <h2>Seu Carrinho</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="closeCart">Continuar Comprando</button>
+                <button class="btn btn-primary" id="checkoutBtn">Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Category Page Specific JavaScript
+        class CategoryPage {
+            constructor() {
+                this.currentCategory = this.getCategoryFromURL();
+                this.filters = {
+                    price: 'all',
+                    sort: 'name'
+                };
+                this.init();
+            }
+            
+            getCategoryFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('category') || 'rings';
+            }
+            
+            init() {
+                this.setupEventListeners();
+                this.loadCategoryData();
+                this.updateCartCount();
+            }
+            
+            setupEventListeners() {
+                // Back button
+                document.getElementById('backButton').addEventListener('click', () => {
+                    window.history.back();
+                });
+                
+                // Cart button
+                document.getElementById('cartBtn').addEventListener('click', this.openCartModal);
+                document.getElementById('closeCart').addEventListener('click', this.closeCartModal);
+                document.getElementById('checkoutBtn').addEventListener('click', this.checkout);
+            }
+            
+            loadCategoryData() {
+                const categoryNames = {
+                    'rings': 'Anéis',
+                    'earrings': 'Brincos',
+                    'necklaces': 'Colares',
+                    'bracelets': 'Pulseiras',
+                    'sets': 'Conjuntos'
+                };
+                
+                const categoryTitle = categoryNames[this.currentCategory] || 'Categoria';
+                document.getElementById('pageTitle').textContent = categoryTitle;
+                
+                this.loadProducts();
+                this.loadFilters();
+            }
+            
+            async loadProducts() {
+                try {
+                    let products = [];
+                    
+                    // Try to load from JSON
+                    try {
+                        const response = await fetch('./data/produtos.json');
+                        const data = await response.json();
+                        products = data.produtos || data;
+                    } catch (error) {
+                        console.error('Erro ao carregar produtos:', error);
+                        products = this.getFallbackProducts();
+                    }
+                    
+                    // Filter by category
+                    const categoryProducts = products.filter(p => p.category === this.currentCategory);
+                    this.displayProducts(categoryProducts);
+                    
+                } catch (error) {
+                    console.error('Erro ao carregar produtos da categoria:', error);
+                    this.showError();
+                }
+            }
+            
+            displayProducts(products) {
+                const grid = document.getElementById('productsGrid');
+                
+                if (products.length === 0) {
+                    grid.innerHTML = `
+                        <div class="no-products">
+                            <i data-lucide="search" width="48" height="48"></i>
+                            <h3>Nenhum produto encontrado</h3>
+                            <p>Não encontramos produtos nesta categoria.</p>
+                        </div>
+                    `;
+                    lucide.createIcons();
+                    return;
+                }
+                
+                // Apply filters and sorting
+                const filteredProducts = this.applyFilters(products);
+                const sortedProducts = this.sortProducts(filteredProducts);
+                
+                grid.innerHTML = sortedProducts.map(product => `
+                    <div class="grid-product-card">
+                        <img src="${product.image}" alt="${product.name}" class="grid-product-image">
+                        <div class="grid-product-info">
+                            <h3 class="grid-product-name">${product.name}</h3>
+                            <div class="grid-product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                            <button class="add-to-cart" data-id="${product.id}">
+                                <i data-lucide="shopping-bag"></i>
+                                Adicionar
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                lucide.createIcons();
+                
+                // Add event listeners to add-to-cart buttons
+                document.querySelectorAll('.add-to-cart').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.currentTarget.getAttribute('data-id'));
+                        this.addToCart(id);
+                    });
+                });
+            }
+            
+            loadFilters() {
+                const filtersContainer = document.getElementById('categoryFilters');
+                
+                const filterOptions = [
+                    { value: 'name', label: 'Nome A-Z' },
+                    { value: 'price-low', label: 'Menor Preço' },
+                    { value: 'price-high', label: 'Maior Preço' }
+                ];
+                
+                filtersContainer.innerHTML = `
+                    <div class="filter-section">
+                        <strong>Ordenar por:</strong>
+                        ${filterOptions.map(option => `
+                            <button class="filter-btn ${this.filters.sort === option.value ? 'active' : ''}" 
+                                    data-filter="sort" 
+                                    data-value="${option.value}">
+                                ${option.label}
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                
+                // Add event listeners to filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const filterType = e.target.getAttribute('data-filter');
+                        const filterValue = e.target.getAttribute('data-value');
+                        
+                        // Update active state
+                        document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(b => {
+                            b.classList.remove('active');
+                        });
+                        e.target.classList.add('active');
+                        
+                        // Update filters and reload products
+                        this.filters[filterType] = filterValue;
+                        this.loadProducts();
+                    });
+                });
+            }
+            
+            applyFilters(products) {
+                // Implement filter logic here
+                return products;
+            }
+            
+            sortProducts(products) {
+                switch (this.filters.sort) {
+                    case 'price-low':
+                        return [...products].sort((a, b) => a.price - b.price);
+                    case 'price-high':
+                        return [...products].sort((a, b) => b.price - a.price);
+                    case 'name':
+                    default:
+                        return [...products].sort((a, b) => a.name.localeCompare(b.name));
+                }
+            }
+            
+            addToCart(productId) {
+                // Implement add to cart functionality
+                console.log('Adicionar ao carrinho:', productId);
+                // Você pode usar as funções do app.js aqui
+            }
+            
+            openCartModal() {
+                // Implement open cart modal
+            }
+            
+            closeCartModal() {
+                // Implement close cart modal
+            }
+            
+            checkout() {
+                // Implement checkout
+            }
+            
+            updateCartCount() {
+                // Implement cart count update
+            }
+            
+            getFallbackProducts() {
+                // Return fallback products for this category
+                const fallbackProducts = {
+                    'rings': [
+                        {
+                            id: 1,
+                            name: "Anel Solitário Prata",
+                            category: "rings",
+                            price: 89.90,
+                            image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=300",
+                            description: "Anel solitário em prata 925 com zircônia"
+                        }
+                    ],
+                    'earrings': [
+                        {
+                            id: 3,
+                            name: "Brincos Argola Prata",
+                            category: "earrings",
+                            price: 65.90,
+                            image: "https://images.unsplash.com/photo-1506634572416-48cdfe530110?w=300",
+                            description: "Brincos argola em prata 925"
+                        }
+                    ]
+                    // Adicione mais categorias conforme necessário
+                };
+                
+                return fallbackProducts[this.currentCategory] || [];
+            }
+            
+            showError() {
+                const grid = document.getElementById('productsGrid');
+                grid.innerHTML = `
+                    <div class="no-products">
+                        <i data-lucide="alert-triangle" width="48" height="48"></i>
+                        <h3>Erro ao carregar produtos</h3>
+                        <p>Tente recarregar a página.</p>
+                        <button onclick="location.reload()" class="btn btn-primary" style="margin-top: 15px;">
+                            Recarregar Página
+                        </button>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+        
+        // Initialize category page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            new CategoryPage();
+        });
+    </script>
+</body>
+</html>

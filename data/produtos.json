@@ -1,259 +1,156 @@
 {
+  "categorias": [
+    {
+      "id": "rings",
+      "nome": "Anéis",
+      "icone": "circle",
+      "descricao": "Anéis elegantes para todos os momentos"
+    },
+    {
+      "id": "earrings",
+      "nome": "Brincos",
+      "icone": "gem",
+      "descricao": "Brincos que complementam seu estilo"
+    },
+    {
+      "id": "necklaces",
+      "nome": "Colares",
+      "icone": "heart",
+      "descricao": "Colares que fazem a diferença"
+    },
+    {
+      "id": "bracelets",
+      "nome": "Pulseiras",
+      "icone": "circle-ellipsis",
+      "descricao": "Pulseiras para compor seu look"
+    },
+    {
+      "id": "sets",
+      "nome": "Conjuntos",
+      "icone": "layers",
+      "descricao": "Conjuntos completos harmoniosos"
+    }
+  ],
   "produtos": [
     {
       "id": 1,
-      "nome": "Anel Solitário Delicado",
-      "preco": 89.9,
-      "categoria": "Anéis",
-      "descricao": "Anel folheado a ouro 18k com zircônia central. Perfeito para o dia a dia ou ocasiões especiais. Acabamento de alta qualidade que garante durabilidade e brilho duradouro.",
-      "imagens": [
-        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600",
-        "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600"
-      ],
-      "estoque": 15,
-      "avaliacao": 4.8,
-      "avaliacoes_count": 24,
-      "novo": true
+      "name": "Anel Solitário Prata",
+      "category": "rings",
+      "price": 89.90,
+      "image": "https://atoleajewelry.com/cdn/shop/files/silver-waterproof-ring.jpg?v=1756155181&width=2430",
+      "description": "Anel solitário em prata 925 com zircônia"
     },
     {
       "id": 2,
-      "nome": "Anel Trio Empilhável",
-      "preco": 129.9,
-      "categoria": "Anéis",
-      "descricao": "Conjunto de 3 anéis folheados a ouro que podem ser usados juntos ou separados. Design minimalista e elegante, perfeito para criar diferentes combinações.",
-      "imagens": [
-        "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=600",
-        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600"
-      ],
-      "estoque": 8,
-      "avaliacao": 4.9,
-      "avaliacoes_count": 31,
-      "novo": false
+      "name": "Anel Coração Dourado",
+      "category": "rings",
+      "price": 79.90,
+      "image": "https://rubans.in/cdn/shop/collections/rings_2.png?v=1728051651",
+      "description": "Anel em banho de ouro com formato de coração"
     },
     {
       "id": 3,
-      "nome": "Anel Coração Vazado",
-      "preco": 69.9,
-      "categoria": "Anéis",
-      "descricao": "Anel delicado com design de coração vazado. Folheado a ouro rosé, ideal para presentear ou se presentear. Símbolo de amor e carinho.",
-      "imagens": ["https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600"],
-      "estoque": 20,
-      "avaliacao": 4.7,
-      "avaliacoes_count": 18,
-      "novo": false
+      "name": "Anel Florido Prateado",
+      "category": "rings",
+      "price": 95.90,
+      "image": "https://annikarutlin.com/cdn/shop/products/Annika-Rutlin-Goddess-Tara-Time-silver-set-three-stacking-rings-WTR05.jpg?v=1546120601&width=1024",
+      "description": "Anel com detalhes floridos em prata"
     },
     {
       "id": 4,
-      "nome": "Anel Infinito Cravejado",
-      "preco": 99.9,
-      "categoria": "Anéis",
-      "descricao": "Anel com símbolo do infinito cravejado com micro zircônias. Folheado a ouro 18k, representa amor eterno e conexões infinitas.",
-      "imagens": ["https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600"],
-      "estoque": 12,
-      "avaliacao": 5.0,
-      "avaliacoes_count": 42,
-      "novo": true
+      "name": "Anel Minimalista Prata",
+      "category": "rings",
+      "price": 65.90,
+      "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=300",
+      "description": "Anel minimalista em prata 925"
     },
     {
       "id": 5,
-      "nome": "Colar Gargantilha Moderna",
-      "preco": 119.9,
-      "categoria": "Colares",
-      "descricao": "Gargantilha folheada a ouro com design contemporâneo. Comprimento ajustável, perfeita para valorizar o colo e combinar com diversos estilos.",
-      "imagens": [
-        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600",
-        "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600"
-      ],
-      "estoque": 10,
-      "avaliacao": 4.6,
-      "avaliacoes_count": 28,
-      "novo": false
+      "name": "Brincos Argola Prata",
+      "category": "earrings",
+      "price": 65.90,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfAhE547vYzSohy5ZhV8Z4IIsFSU4U-utg_A&s",
+      "description": "Brincos argola em prata 925"
     },
     {
       "id": 6,
-      "nome": "Colar Pingente Coração",
-      "preco": 89.9,
-      "categoria": "Colares",
-      "descricao": "Colar delicado com pingente de coração folheado a ouro. Corrente ajustável de 40 a 45cm. Presente perfeito para demonstrar carinho.",
-      "imagens": ["https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600"],
-      "estoque": 18,
-      "avaliacao": 4.8,
-      "avaliacoes_count": 35,
-      "novo": true
+      "name": "Brincos Stud Diamante",
+      "category": "earrings",
+      "price": 75.90,
+      "image": "https://images.unsplash.com/photo-1506634572416-48cdfe530110?w=300",
+      "description": "Brincos stud com zircônia tipo diamante"
     },
     {
       "id": 7,
-      "nome": "Colar Ponto de Luz",
-      "preco": 149.9,
-      "categoria": "Colares",
-      "descricao": "Colar clássico com zircônia solitária. Folheado a ouro 18k, design atemporal que nunca sai de moda. Elegância e sofisticação.",
-      "imagens": ["https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600"],
-      "estoque": 7,
-      "avaliacao": 4.9,
-      "avaliacoes_count": 52,
-      "novo": false
+      "name": "Colar Prata com Pingente",
+      "category": "necklaces",
+      "price": 120.90,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU-fEiVDJl50qfLt3lrDouYXNkHyNS0K9n4g&s",
+      "description": "Colar em prata 925 com pingente de coração"
     },
     {
       "id": 8,
-      "nome": "Colar Camadas Triplo",
-      "preco": 139.9,
-      "categoria": "Colares",
-      "descricao": "Colar com três camadas de correntes em tamanhos diferentes. Folheado a ouro, cria um efeito moderno e estiloso. Tendência do momento.",
-      "imagens": ["https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600"],
-      "estoque": 9,
-      "avaliacao": 4.7,
-      "avaliacoes_count": 21,
-      "novo": false
+      "name": "Colar Dourado Minimalista",
+      "category": "necklaces",
+      "price": 110.90,
+      "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300",
+      "description": "Colar banho de ouro design minimalista"
     },
     {
       "id": 9,
-      "nome": "Brinco Argola Média",
-      "preco": 79.9,
-      "categoria": "Brincos",
-      "descricao": "Brinco de argola folheado a ouro 18k. Tamanho médio (3cm), versátil para usar no dia a dia ou em ocasiões especiais. Fecho seguro.",
-      "imagens": [
-        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600",
-        "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=600"
-      ],
-      "estoque": 25,
-      "avaliacao": 4.8,
-      "avaliacoes_count": 67,
-      "novo": false
+      "name": "Pulseira Tennis Prata",
+      "category": "bracelets",
+      "price": 150.90,
+      "image": "https://images.tcdn.com.br/img/img_prod/778992/90_pulseira_riviera_tennis_prata_2793_3_066af8d9520a481a9fb64f57b0906abc.jpg",
+      "description": "Pulseira tennis em prata com zircônias"
     },
     {
       "id": 10,
-      "nome": "Brinco Pérola Clássico",
-      "preco": 99.9,
-      "categoria": "Brincos",
-      "descricao": "Brinco com pérola sintética de alta qualidade. Base folheada a ouro. Design clássico e elegante, perfeito para qualquer idade.",
-      "imagens": ["https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600"],
-      "estoque": 14,
-      "avaliacao": 4.9,
-      "avaliacoes_count": 43,
-      "novo": true
+      "name": "Pulseira Corrente Dourada",
+      "category": "bracelets",
+      "price": 85.90,
+      "image": "https://images.unsplash.com/photo-1588444650700-6c7f0c89d36b?w=300",
+      "description": "Pulseira corrente em banho de ouro"
     },
     {
       "id": 11,
-      "nome": "Brinco Ear Cuff Moderno",
-      "preco": 69.9,
-      "categoria": "Brincos",
-      "descricao": "Ear cuff folheado a ouro que não precisa de furo. Design moderno e despojado. Fácil de usar e super confortável.",
-      "imagens": ["https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?w=600"],
-      "estoque": 11,
-      "avaliacao": 4.6,
-      "avaliacoes_count": 19,
-      "novo": false
+      "name": "Conjunto Noiva Premium",
+      "category": "sets",
+      "price": 299.90,
+      "image": "https://m.media-amazon.com/images/I/41EsgruKU3L._AC_SY1000_.jpg",
+      "description": "Conjunto completo para noiva em prata 925"
     },
     {
       "id": 12,
-      "nome": "Brinco Gota Cravejado",
-      "preco": 109.9,
-      "categoria": "Brincos",
-      "descricao": "Brinco em formato de gota cravejado com zircônias. Folheado a ouro 18k. Sofisticação e brilho para ocasiões especiais.",
-      "imagens": ["https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600"],
-      "estoque": 6,
-      "avaliacao": 5.0,
-      "avaliacoes_count": 38,
-      "novo": false
+      "name": "Conjunto Dourado Elegante",
+      "category": "sets",
+      "price": 259.90,
+      "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300",
+      "description": "Conjunto banho de ouro 18k premium"
     },
     {
       "id": 13,
-      "nome": "Pulseira Elos Delicados",
-      "preco": 89.9,
-      "categoria": "Pulseiras",
-      "descricao": "Pulseira com elos delicados folheada a ouro 18k. Fecho ajustável de 16 a 19cm. Elegância minimalista para o dia a dia.",
-      "imagens": [
-        "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600",
-        "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600"
-      ],
-      "estoque": 16,
-      "avaliacao": 4.7,
-      "avaliacoes_count": 29,
-      "novo": false
+      "name": "Anel Pedra Azul",
+      "category": "rings",
+      "price": 110.90,
+      "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=300",
+      "description": "Anel com pedra azul em prata"
     },
     {
       "id": 14,
-      "nome": "Pulseira Berloque Coração",
-      "preco": 119.9,
-      "categoria": "Pulseiras",
-      "descricao": "Pulseira com berloque de coração cravejado. Folheada a ouro, corrente ajustável. Charme e delicadeza em uma peça.",
-      "imagens": ["https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600"],
-      "estoque": 13,
-      "avaliacao": 4.8,
-      "avaliacoes_count": 34,
-      "novo": true
+      "name": "Brincos Pérola Natural",
+      "category": "earrings",
+      "price": 89.90,
+      "image": "https://images.unsplash.com/photo-1506634572416-48cdfe530110?w=300",
+      "description": "Brincos com pérolas naturais cultivadas"
     },
     {
       "id": 15,
-      "nome": "Pulseira Corrente Grossa",
-      "preco": 99.9,
-      "categoria": "Pulseiras",
-      "descricao": "Pulseira com corrente grossa folheada a ouro. Design moderno e marcante. Tendência para quem gosta de peças statement.",
-      "imagens": ["https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600"],
-      "estoque": 8,
-      "avaliacao": 4.6,
-      "avaliacoes_count": 22,
-      "novo": false
-    },
-    {
-      "id": 16,
-      "nome": "Pulseira Dupla Camada",
-      "preco": 129.9,
-      "categoria": "Pulseiras",
-      "descricao": "Pulseira com duas camadas de correntes diferentes. Folheada a ouro 18k. Efeito sofisticado e moderno em uma única peça.",
-      "imagens": ["https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600"],
-      "estoque": 10,
-      "avaliacao": 4.9,
-      "avaliacoes_count": 27,
-      "novo": false
-    },
-    {
-      "id": 17,
-      "nome": "Terço Folheado Tradicional",
-      "preco": 159.9,
-      "categoria": "Terços",
-      "descricao": "Terço folheado a ouro 18k com contas em cristal. Crucifixo detalhado e resistente. Peça de fé e devoção com qualidade premium.",
-      "imagens": ["https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600"],
-      "estoque": 5,
-      "avaliacao": 5.0,
-      "avaliacoes_count": 48,
-      "novo": false
-    },
-    {
-      "id": 18,
-      "nome": "Terço Pulseira Elegante",
-      "preco": 79.9,
-      "categoria": "Terços",
-      "descricao": "Terço de pulso folheado a ouro com contas pequenas. Prático para levar sempre com você. Fé e estilo em uma peça delicada.",
-      "imagens": ["https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600"],
-      "estoque": 12,
-      "avaliacao": 4.8,
-      "avaliacoes_count": 36,
-      "novo": false
-    },
-    {
-      "id": 19,
-      "nome": "Terço Nossa Senhora",
-      "preco": 189.9,
-      "categoria": "Terços",
-      "descricao": "Terço especial com medalha de Nossa Senhora Aparecida. Folheado a ouro com contas em pérola sintética. Peça de devoção premium.",
-      "imagens": ["https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600"],
-      "estoque": 4,
-      "avaliacao": 5.0,
-      "avaliacoes_count": 52,
-      "novo": false
-    },
-    {
-      "id": 20,
-      "nome": "Terço Masculino Robusto",
-      "preco": 169.9,
-      "categoria": "Terços",
-      "descricao": "Terço com design masculino, contas maiores e corrente reforçada. Folheado a ouro envelhecido. Força e fé em uma peça marcante.",
-      "imagens": ["https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600"],
-      "estoque": 7,
-      "avaliacao": 4.9,
-      "avaliacoes_count": 31,
-      "novo": false
+      "name": "Colar Prata com Gema",
+      "category": "necklaces",
+      "price": 135.90,
+      "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300",
+      "description": "Colar em prata com gema natural"
     }
   ]
 }
